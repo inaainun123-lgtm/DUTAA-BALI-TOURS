@@ -404,16 +404,138 @@ const RecenterMap = ({ center }) => {
   return null;
 };
 
+// Address Search Component with Autocomplete
+const AddressSearch = ({ setMarkerPosition, setSelectedLocation, setSearchedAddress }) => {
+  const [query, setQuery] = useState('');
+  const [suggestions, setSuggestions] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const searchRef = useRef(null);
+
+  // Debounce search
+  useEffect(() => {
+    if (query.length < 3) {
+      setSuggestions([]);
+      return;
+    }
+
+    const timer = setTimeout(async () => {
+      setIsLoading(true);
+      try {
+        // Search with Nominatim, bounded to Bali area
+        const response = await fetch(
+          `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&countrycodes=id&viewbox=114.4,−9.0,115.8,−8.0&bounded=0&limit=5`
+        );
+        const data = await response.json();
+        
+        // Filter results to Bali area
+        const baliResults = data.filter(item => 
+          item.display_name.toLowerCase().includes('bali') ||
+          (parseFloat(item.lat) >= -9.0 && parseFloat(item.lat) <= -8.0 &&
+           parseFloat(item.lon) >= 114.4 && parseFloat(item.lon) <= 116.0)
+        );
+        
+        setSuggestions(baliResults.length > 0 ? baliResults : data.slice(0, 5));
+      } catch (error) {
+        console.error('Search error:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [query]);
+
+  // Close suggestions when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (searchRef.current && !searchRef.current.contains(e.target)) {
+        setShowSuggestions(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const handleSelect = (item) => {
+    const lat = parseFloat(item.lat);
+    const lng = parseFloat(item.lon);
+    setMarkerPosition([lat, lng]);
+    setSelectedLocation(null); // Clear predefined location
+    setSearchedAddress(item.display_name);
+    setQuery(item.display_name.split(',')[0]); // Show short name
+    setShowSuggestions(false);
+  };
+
+  return (
+    <div ref={searchRef} className="relative">
+      <div className="relative">
+        <input
+          type="text"
+          value={query}
+          onChange={(e) => {
+            setQuery(e.target.value);
+            setShowSuggestions(true);
+          }}
+          onFocus={() => setShowSuggestions(true)}
+          placeholder="Ketik nama hotel/villa/alamat..."
+          className="w-full h-12 pl-10 pr-4 rounded-xl border border-stone-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-sm"
+          data-testid="address-search-input"
+        />
+        <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-bali-stone" />
+        {isLoading && (
+          <div className="absolute right-3 top-1/2 -translate-y-1/2">
+            <div className="w-5 h-5 border-2 border-primary/30 border-t-primary rounded-full animate-spin" />
+          </div>
+        )}
+      </div>
+
+      {/* Suggestions Dropdown */}
+      {showSuggestions && suggestions.length > 0 && (
+        <div className="absolute z-50 w-full mt-2 bg-white rounded-xl shadow-floating border border-stone-100 overflow-hidden animate-fade-in">
+          {suggestions.map((item, i) => (
+            <button
+              key={i}
+              onClick={() => handleSelect(item)}
+              className="w-full px-4 py-3 text-left hover:bg-secondary/50 transition-colors border-b border-stone-50 last:border-0"
+            >
+              <div className="flex items-start gap-3">
+                <MapPin className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" />
+                <div>
+                  <p className="text-sm font-medium text-primary line-clamp-1">
+                    {item.display_name.split(',')[0]}
+                  </p>
+                  <p className="text-xs text-bali-stone line-clamp-1">
+                    {item.display_name.split(',').slice(1, 4).join(',')}
+                  </p>
+                </div>
+              </div>
+            </button>
+          ))}
+        </div>
+      )}
+
+      {showSuggestions && query.length >= 3 && suggestions.length === 0 && !isLoading && (
+        <div className="absolute z-50 w-full mt-2 bg-white rounded-xl shadow-floating border border-stone-100 p-4 text-center text-sm text-bali-stone">
+          Tidak ditemukan hasil untuk "{query}"
+        </div>
+      )}
+    </div>
+  );
+};
+
 // Locations Section with Interactive Map
 const LocationsSection = ({ locations, selectedLocation, setSelectedLocation, markerPosition, setMarkerPosition }) => {
   const regions = ['South Bali', 'West Bali', 'East Bali', 'Central Bali', 'North Bali', 'Northwest Bali'];
   const [activeRegion, setActiveRegion] = useState('South Bali');
+  const [searchedAddress, setSearchedAddress] = useState('');
   
   const filteredLocations = locations.filter(loc => loc.region === activeRegion);
   
   const handleLocationSelect = (loc) => {
     setSelectedLocation(loc);
     setMarkerPosition([loc.lat, loc.lng]);
+    setSearchedAddress(''); // Clear search when selecting predefined location
   };
 
   return (
@@ -428,19 +550,26 @@ const LocationsSection = ({ locations, selectedLocation, setSelectedLocation, ma
             Pick-up & Drop-off Points
           </h2>
           <p className="text-bali-stone text-lg">
-            Pilih lokasi atau <span className="text-accent font-semibold">drag marker</span> di peta untuk menentukan titik penjemputan Anda!
+            Ketik alamat hotel/villa Anda, pilih lokasi dari daftar, atau <span className="text-accent font-semibold">drag marker</span> di peta!
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Map */}
           <div className="bg-white rounded-3xl overflow-hidden shadow-floating">
+            {/* Address Search */}
             <div className="p-4 bg-secondary/50 border-b border-stone-100">
-              <h3 className="font-heading font-semibold text-primary flex items-center gap-2">
+              <h3 className="font-heading font-semibold text-primary flex items-center gap-2 mb-3">
                 <MapPin className="w-5 h-5 text-accent" />
-                Bali Map - Drag marker untuk posisi penjemputan
+                Cari Alamat Penjemputan
               </h3>
+              <AddressSearch 
+                setMarkerPosition={setMarkerPosition} 
+                setSelectedLocation={setSelectedLocation}
+                setSearchedAddress={setSearchedAddress}
+              />
             </div>
+            
             <div className="h-[400px] relative">
               <MapContainer
                 center={markerPosition}
