@@ -1,0 +1,420 @@
+{
+  "timestamp": "2026-02-22T09:58:54.520403",
+  "summary": {
+    "total_tests": 9,
+    "passed_tests": 8,
+    "failed_tests": 1,
+    "success_rate": 88.88888888888889
+  },
+  "test_results": [
+    {
+      "name": "Root API Endpoint",
+      "method": "GET",
+      "endpoint": "",
+      "expected_status": 200,
+      "actual_status": 200,
+      "success": true,
+      "error": null,
+      "response_data": {
+        "message": "Duta Bali Tour API"
+      }
+    },
+    {
+      "name": "Get Tour Packages",
+      "method": "GET",
+      "endpoint": "packages",
+      "expected_status": 200,
+      "actual_status": 200,
+      "success": true,
+      "error": null,
+      "response_data": [
+        {
+          "id": "best-of-ubud",
+          "name": "Best of Ubud Tour",
+          "price": 750000,
+          "duration": "8 hours",
+          "description": "Explore the heart of Bali's culture and nature",
+          "destinations": [
+            "Batuan Temple Village",
+            "Coffee Plantation",
+            "Sacred Monkey Forest",
+            "Lunch at Local Restaurant",
+            "Tegalalang Rice Terrace",
+            "Tegenungan Waterfall"
+          ],
+          "included": [
+            "Private car with AC",
+            "English-speaking driver",
+            "Petrol",
+            "Parking fee",
+            "Free mineral water"
+          ],
+          "excluded": [
+            "Personal expenses",
+            "Tipping (optional)",
+            "Entrance fees"
+          ],
+          "images": [
+            "https://images.pexels.com/photos/2166559/pexels-photo-2166559.jpeg?auto=compress&w=800",
+            "https://images.pexels.com/photos/19137171/pexels-photo-19137171.jpeg?auto=compress&w=800",
+            "https://images.pexels.com/photos/2166553/pexels-photo-2166553.jpeg?auto=compress&w=800"
+          ]
+        },
+        {
+          "id": "hiking-kintamani",
+          "name": "Hiking or Jeep Kintamani Tour",
+          "price": 1300000,
+          "duration": "8 hours",
+          "description": "Witness the majestic sunrise at Mount Batur",
+          "destinations": [
+            "Sunrise Jeep Tour / Hiking Mount Batur",
+            "Natural Hot Spring",
+            "Breakfast at Kintamani Caf\u00e9",
+            "Coffee Plantation"
+          ],
+          "included": [
+            "Private car with AC",
+            "4WD Jeep",
+            "English-speaking driver",
+            "Petrol",
+            "Parking fee",
+            "Free mineral water"
+          ],
+          "excluded": [
+            "Personal expenses",
+            "Tipping (optional)"
+          ],
+          "images": [
+            "https://images.pexels.com/photos/3254728/pexels-photo-3254728.jpeg?auto=compress&w=800",
+            "https://images.pexels.com/photos/2499744/pexels-photo-2499744.jpeg?auto=compress&w=800",
+            "https://images.pexels.com/photos/6176936/pexels-photo-6176936.jpeg?auto=compress&w=800"
+          ]
+        },
+        {
+          "id": "best-of-uluwatu",
+          "name": "Best of Uluwatu Tour",
+          "price": 950000,
+          "duration": "8 hours",
+          "description": "Experience dramatic cliffs and Kecak dance",
+          "destinations": [
+            "Garuda Wisnu Kencana Cultural Park",
+            "Coffee Plantation",
+            "Kecak Dance at Uluwatu Temple",
+            "Dinner at Jimbaran Seafood"
+          ],
+          "included": [
+            "Private car with AC",
+            "English-speaking driver",
+            "Petrol",
+            "Parking fee",
+            "Free mineral water"
+          ],
+          "excluded": [
+            "Personal expenses",
+            "Tipping (optional)",
+            "Entrance fees"
+          ],
+          "images": [
+            "https://images.pexels.com/photos/2474690/pexels-photo-2474690.jpeg?auto=compress&w=800",
+            "https://images.pexels.com/photos/2474689/pexels-photo-2474689.jpeg?auto=compress&w=800",
+            "https://images.pexels.com/photos/5990051/pexels-photo-5990051.jpeg?auto=compress&w=800"
+          ]
+        },
+        {
+          "id": "best-of-bali-west",
+          "name": "Best of Bali West Tour",
+          "price": 950000,
+          "duration": "10 hours",
+          "description": "Discover iconic temples and rice terraces",
+          "destinations": [
+            "Tanah Lot Temple",
+            "Sangeh Monkey Forest",
+            "Coffee Plantation",
+            "Lunch",
+            "Ulun Danu Beratan Temple",
+            "Jatiluwih Rice Terrace",
+            "Taman Ayun Temple"
+          ],
+          "included": [
+            "Private car with AC",
+            "English-speaking driver",
+            "Petrol",
+            "Parking fee",
+            "Free mineral water"
+          ],
+          "excluded": [
+            "Personal expenses",
+            "Tipping (optional)",
+            "Entrance fees"
+          ],
+          "images": [
+            "https://images.pexels.com/photos/2474690/pexels-photo-2474690.jpeg?auto=compress&w=800",
+            "https://images.pexels.com/photos/2100804/pexels-photo-2100804.jpeg?auto=compress&w=800",
+            "https://images.pexels.com/photos/17299295/pexels-photo-17299295.jpeg?auto=compress&w=800"
+          ]
+        },
+        {
+          "id": "best-of-kintamani",
+          "name": "Best of Kintamani Tour",
+          "price": 850000,
+          "duration": "10 hours",
+          "description": "Explore volcanoes and sacred springs",
+          "destinations": [
+            "Goa Gajah (Elephant Cave Temple)",
+            "Coffee Plantation",
+            "Tirta Empul Holy Spring Temple",
+            "Kintamani Volcano Viewpoint",
+            "Tegalalang Rice Terrace"
+          ],
+          "included": [
+            "Private car with AC",
+            "English-speaking driver",
+            "Petrol",
+            "Parking fee",
+            "Free mineral water"
+          ],
+          "excluded": [
+            "Personal expenses",
+            "Tipping (optional)",
+            "Entrance fees"
+          ],
+          "images": [
+            "https://images.pexels.com/photos/3254728/pexels-photo-3254728.jpeg?auto=compress&w=800",
+            "https://images.pexels.com/photos/35144895/pexels-photo-35144895.jpeg?auto=compress&w=800",
+            "https://images.pexels.com/photos/19137171/pexels-photo-19137171.jpeg?auto=compress&w=800"
+          ]
+        },
+        {
+          "id": "best-of-lempuyang",
+          "name": "Best of Lempuyang Tour",
+          "price": 1000000,
+          "duration": "12 hours",
+          "description": "Visit the iconic Gate of Heaven",
+          "destinations": [
+            "Lempuyang Temple (Gate of Heaven)",
+            "Tirta Gangga Royal Water Palace",
+            "Taman Ujung Floating Palace",
+            "Lunch"
+          ],
+          "included": [
+            "Private car with AC",
+            "English-speaking driver",
+            "Petrol",
+            "Parking fee",
+            "Free mineral water"
+          ],
+          "excluded": [
+            "Personal expenses",
+            "Tipping (optional)",
+            "Entrance fees"
+          ],
+          "images": [
+            "https://images.pexels.com/photos/28211183/pexels-photo-28211183.jpeg?auto=compress&w=800",
+            "https://images.pexels.com/photos/1646870/pexels-photo-1646870.jpeg?auto=compress&w=800",
+            "https://images.pexels.com/photos/35144895/pexels-photo-35144895.jpeg?auto=compress&w=800"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get Pickup Locations",
+      "method": "GET",
+      "endpoint": "locations",
+      "expected_status": 200,
+      "actual_status": 200,
+      "success": true,
+      "error": null,
+      "response_data": [
+        {
+          "id": "kuta",
+          "name": "Kuta",
+          "region": "South Bali",
+          "surcharge": 300000
+        },
+        {
+          "id": "seminyak",
+          "name": "Seminyak",
+          "region": "South Bali",
+          "surcharge": 350000
+        },
+        {
+          "id": "canggu",
+          "name": "Canggu",
+          "region": "West Bali",
+          "surcharge": 500000
+        },
+        {
+          "id": "nusa-dua",
+          "name": "Nusa Dua",
+          "region": "South Bali",
+          "surcharge": 350000
+        },
+        {
+          "id": "uluwatu",
+          "name": "Uluwatu",
+          "region": "South Bali",
+          "surcharge": 500000
+        },
+        {
+          "id": "jimbaran",
+          "name": "Jimbaran",
+          "region": "South Bali",
+          "surcharge": 350000
+        },
+        {
+          "id": "sanur",
+          "name": "Sanur",
+          "region": "East Bali",
+          "surcharge": 300000
+        },
+        {
+          "id": "legian",
+          "name": "Legian",
+          "region": "South Bali",
+          "surcharge": 350000
+        },
+        {
+          "id": "tanah-lot",
+          "name": "Tanah Lot",
+          "region": "West Bali",
+          "surcharge": 600000
+        },
+        {
+          "id": "ubud",
+          "name": "Ubud",
+          "region": "Central Bali",
+          "surcharge": 450000
+        },
+        {
+          "id": "padang-bai",
+          "name": "Padang Bai",
+          "region": "East Bali",
+          "surcharge": 700000
+        },
+        {
+          "id": "sidemen",
+          "name": "Sidemen",
+          "region": "East Bali",
+          "surcharge": 600000
+        },
+        {
+          "id": "candidasa",
+          "name": "Candidasa",
+          "region": "East Bali",
+          "surcharge": 650000
+        },
+        {
+          "id": "kintamani",
+          "name": "Kintamani",
+          "region": "North Bali",
+          "surcharge": 750000
+        },
+        {
+          "id": "lovina",
+          "name": "Lovina",
+          "region": "North Bali",
+          "surcharge": 950000
+        },
+        {
+          "id": "pemuteran",
+          "name": "Pemuteran",
+          "region": "Northwest Bali",
+          "surcharge": 1000000
+        }
+      ]
+    },
+    {
+      "name": "Calculate Price",
+      "method": "POST",
+      "endpoint": "calculate-price",
+      "expected_status": 200,
+      "actual_status": 200,
+      "success": true,
+      "error": null,
+      "response_data": {
+        "package_name": "Best of Ubud Tour",
+        "package_price": 750000,
+        "location_name": "Kuta",
+        "surcharge": 300000,
+        "num_passengers": 1,
+        "total": 1050000
+      }
+    },
+    {
+      "name": "Create Booking",
+      "method": "POST",
+      "endpoint": "bookings",
+      "expected_status": 201,
+      "actual_status": 200,
+      "success": false,
+      "error": "Status code mismatch. Response: {\"id\":\"9729ea05-6638-448c-b508-b53b6e31e089\",\"full_name\":\"Test User 095853\",\"email\":\"test095853@example.com\",\"whatsapp\":\"+6281234567890\",\"package_id\":\"best-of-ubud\",\"package_name\":\"Best of Ubud Tour\",",
+      "response_data": null
+    },
+    {
+      "name": "Get All Bookings",
+      "method": "GET",
+      "endpoint": "bookings",
+      "expected_status": 200,
+      "actual_status": 200,
+      "success": true,
+      "error": null,
+      "response_data": [
+        {
+          "id": "9729ea05-6638-448c-b508-b53b6e31e089",
+          "full_name": "Test User 095853",
+          "email": "test095853@example.com",
+          "whatsapp": "+6281234567890",
+          "package_id": "best-of-ubud",
+          "package_name": "Best of Ubud Tour",
+          "package_price": 750000,
+          "tour_date": "2026-03-01",
+          "pickup_location_id": "kuta",
+          "pickup_location_name": "Kuta",
+          "pickup_surcharge": 300000,
+          "num_passengers": 2,
+          "total_price": 1050000,
+          "special_requests": "Test booking - please ignore",
+          "status": "pending",
+          "created_at": "2026-02-22T09:58:54.061016Z"
+        }
+      ]
+    },
+    {
+      "name": "Generate WhatsApp Link",
+      "method": "GET",
+      "endpoint": "whatsapp-link",
+      "expected_status": 200,
+      "actual_status": 200,
+      "success": true,
+      "error": null,
+      "response_data": {
+        "link": "https://wa.me/6283871225179?text=%F0%9F%8C%BA%20%2ANEW%20TOUR%20BOOKING%2A%0A%0A%F0%9F%91%A4%20%2ACustomer%3A%2A%20Test%20Customer%0A%F0%9F%93%85%20%2ATour%20Date%3A%2A%202026-02-15%0A%F0%9F%91%A5%20%2APassengers%3A%2A%202%0A%0A%F0%9F%8E%AB%20%2APackage%3A%2A%20Best%20of%20Ubud%20Tour%0A%F0%9F%92%B0%20Package%20Price%3A%20Rp%20750%2C000%0A%0A%F0%9F%93%8D%20%2APickup%20Location%3A%2A%20Kuta%0A%F0%9F%92%B0%20Surcharge%3A%20Rp%20300%2C000%0A%0A%E2%95%90%E2%95%90%E2%95%90%E2%95%90%E2%95%90%E2%95%90%E2%95%90%E2%95%90%E2%95%90%E2%95%90%E2%95%90%E2%95%90%E2%95%90%E2%95%90%E2%95%90%E2%95%90%E2%95%90%E2%95%90%E2%95%90%0A%F0%9F%92%B5%20%2ATOTAL%3A%20Rp%201%2C050%2C000%2A%0A%E2%95%90%E2%95%90%E2%95%90%E2%95%90%E2%95%90%E2%95%90%E2%95%90%E2%95%90%E2%95%90%E2%95%90%E2%95%90%E2%95%90%E2%95%90%E2%95%90%E2%95%90%E2%95%90%E2%95%90%E2%95%90%E2%95%90%0A%0A%F0%9F%93%9D%20%2ASpecial%20Requests%3A%2A%0ATest%20request%0A%0AThank%20you%20for%20booking%20with%20Duta%20Bali%20Tours%21%20%F0%9F%99%8F",
+        "message": "\ud83c\udf3a *NEW TOUR BOOKING*\n\n\ud83d\udc64 *Customer:* Test Customer\n\ud83d\udcc5 *Tour Date:* 2026-02-15\n\ud83d\udc65 *Passengers:* 2\n\n\ud83c\udfab *Package:* Best of Ubud Tour\n\ud83d\udcb0 Package Price: Rp 750,000\n\n\ud83d\udccd *Pickup Location:* Kuta\n\ud83d\udcb0 Surcharge: Rp 300,000\n\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\n\ud83d\udcb5 *TOTAL: Rp 1,050,000*\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\n\n\ud83d\udcdd *Special Requests:*\nTest request\n\nThank you for booking with Duta Bali Tours! \ud83d\ude4f"
+      }
+    },
+    {
+      "name": "Invalid Package ID",
+      "method": "POST",
+      "endpoint": "calculate-price",
+      "expected_status": 404,
+      "actual_status": 404,
+      "success": true,
+      "error": null,
+      "response_data": {
+        "detail": "Package not found"
+      }
+    },
+    {
+      "name": "Invalid Location ID",
+      "method": "POST",
+      "endpoint": "calculate-price",
+      "expected_status": 404,
+      "actual_status": 404,
+      "success": true,
+      "error": null,
+      "response_data": {
+        "detail": "Location not found"
+      }
+    }
+  ]
+}
