@@ -421,7 +421,7 @@ const LocationsSection = ({ locations, selectedLocation, setSelectedLocation, ma
       <div className="container mx-auto px-4 md:px-6 max-w-7xl">
         <div className="text-center max-w-3xl mx-auto mb-12">
           <span className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-4">
-            <Navigation className="w-4 h-4" />
+            <NavigationIcon className="w-4 h-4" />
             Location Guide
           </span>
           <h2 className="font-heading text-3xl md:text-5xl font-bold text-primary mb-4">
