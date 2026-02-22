@@ -922,16 +922,14 @@ const Footer = () => (
         {/* Logo & About */}
         <div className="md:col-span-2">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center">
-              <svg viewBox="0 0 40 40" className="w-8 h-8 text-accent">
-                <path fill="currentColor" d="M20 4c-1.5 0-3 1.5-3 3v6c0 1.5 1.5 3 3 3s3-1.5 3-3V7c0-1.5-1.5-3-3-3z"/>
-                <path fill="currentColor" d="M8 18c0-2 2-4 4-4h16c2 0 4 2 4 4v2c0 8-6 14-12 16-6-2-12-8-12-16v-2z" opacity="0.8"/>
-                <circle fill="currentColor" cx="20" cy="24" r="4"/>
-              </svg>
-            </div>
+            <img 
+              src={LOGO_URL} 
+              alt="Duta Bali Transport and Tours" 
+              className="w-16 h-16 rounded-full object-cover border-2 border-white/20"
+            />
             <div>
-              <h3 className="font-heading text-xl font-bold">Duta Bali Tours</h3>
-              <p className="text-white/60 text-sm">Private Tours</p>
+              <h3 className="font-heading text-xl font-bold">Duta Bali</h3>
+              <p className="text-white/60 text-sm">Transport & Tours</p>
             </div>
           </div>
           <p className="text-white/70 leading-relaxed max-w-md">
