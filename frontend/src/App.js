@@ -7,7 +7,7 @@ import 'leaflet/dist/leaflet.css';
 import { 
   MapPin, Clock, Users, Phone, Mail, Star, 
   ChevronRight, ChevronDown, Check, X, Calendar, MessageCircle,
-  Menu, ArrowRight, Sparkles, Car, Shield, Heart, Navigation,
+  Menu, ArrowRight, Sparkles, Car, Shield, Heart, Navigation as NavigationIcon,
   Image as ImageIcon, ExternalLink
 } from "lucide-react";
 
