@@ -328,16 +328,30 @@ const LocationCard = ({ location, isSelected, onSelect }) => (
   </button>
 );
 
-// Locations Section
+// Locations Section with Google Maps
 const LocationsSection = ({ locations }) => {
+  const [selectedLocation, setSelectedLocation] = useState(null);
+  
   const groupedLocations = locations.reduce((acc, loc) => {
     if (!acc[loc.region]) acc[loc.region] = [];
     acc[loc.region].push(loc);
     return acc;
   }, {});
 
+  // Default center is Bali
+  const defaultCenter = { lat: -8.4095, lng: 115.1889 };
+  const mapCenter = selectedLocation 
+    ? { lat: selectedLocation.lat, lng: selectedLocation.lng }
+    : defaultCenter;
+  const mapZoom = selectedLocation ? 13 : 9;
+
+  const googleMapsUrl = `https://www.google.com/maps/embed/v1/view?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&center=${mapCenter.lat},${mapCenter.lng}&zoom=${mapZoom}&maptype=roadmap`;
+  
+  // Fallback to OpenStreetMap if Google Maps doesn't work
+  const osmUrl = `https://www.openstreetmap.org/export/embed.html?bbox=${mapCenter.lng - 0.1},${mapCenter.lat - 0.1},${mapCenter.lng + 0.1},${mapCenter.lat + 0.1}&layer=mapnik&marker=${mapCenter.lat},${mapCenter.lng}`;
+
   return (
-    <section id="locations" className="py-20 md:py-28">
+    <section id="locations" className="py-20 md:py-28 bg-secondary/30">
       <div className="container mx-auto px-4 md:px-6 max-w-7xl">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
@@ -349,30 +363,85 @@ const LocationsSection = ({ locations }) => {
             Pick-up & Drop-off Points
           </h2>
           <p className="text-bali-stone text-lg">
-            Additional charges based on your location. Find your area below!
+            Click on a location to see it on the map. Additional charges based on your location.
           </p>
         </div>
 
-        {/* Regions Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {Object.entries(groupedLocations).map(([region, locs]) => (
-            <div key={region} className="bg-white rounded-3xl p-6 shadow-soft">
-              <h3 className="font-heading text-xl font-semibold text-primary mb-4 flex items-center gap-2">
-                <MapPin className="w-5 h-5 text-accent" />
-                {region}
-              </h3>
-              <div className="space-y-3">
-                {locs.map(loc => (
-                  <div key={loc.id} className="flex items-center justify-between p-3 bg-secondary/50 rounded-xl">
-                    <span className="font-medium text-bali-stone">{loc.name}</span>
-                    <span className="text-accent font-semibold text-sm">
-                      +Rp {formatPrice(loc.surcharge)}
-                    </span>
+        <div className="grid lg:grid-cols-2 gap-8">
+          {/* Map */}
+          <div className="order-2 lg:order-1">
+            <div className="bg-white rounded-3xl overflow-hidden shadow-floating sticky top-24">
+              <div className="relative h-[500px]">
+                <iframe
+                  title="Bali Pickup Locations Map"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  loading="lazy"
+                  src={osmUrl}
+                  allowFullScreen
+                />
+                {/* Map overlay info */}
+                {selectedLocation && (
+                  <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-sm rounded-2xl p-4 shadow-lg animate-fade-in-up">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <h4 className="font-heading font-semibold text-primary text-lg">{selectedLocation.name}</h4>
+                        <p className="text-sm text-bali-stone">{selectedLocation.region}</p>
+                      </div>
+                      <div className="text-right">
+                        <span className="text-accent font-bold text-xl">
+                          +Rp {formatPrice(selectedLocation.surcharge)}
+                        </span>
+                        <p className="text-xs text-bali-stone">Surcharge</p>
+                      </div>
+                    </div>
+                    <a 
+                      href={`https://www.google.com/maps?q=${selectedLocation.lat},${selectedLocation.lng}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-3 w-full bg-primary text-white py-2 rounded-xl font-medium hover:bg-primary-hover transition-colors flex items-center justify-center gap-2 text-sm"
+                    >
+                      <MapPin className="w-4 h-4" />
+                      Open in Google Maps
+                    </a>
                   </div>
-                ))}
+                )}
               </div>
             </div>
-          ))}
+          </div>
+
+          {/* Locations List */}
+          <div className="order-1 lg:order-2 space-y-6">
+            {Object.entries(groupedLocations).map(([region, locs]) => (
+              <div key={region} className="bg-white rounded-3xl p-6 shadow-soft">
+                <h3 className="font-heading text-xl font-semibold text-primary mb-4 flex items-center gap-2">
+                  <MapPin className="w-5 h-5 text-accent" />
+                  {region}
+                </h3>
+                <div className="space-y-2">
+                  {locs.map(loc => (
+                    <button
+                      key={loc.id}
+                      onClick={() => setSelectedLocation(loc)}
+                      className={`w-full flex items-center justify-between p-3 rounded-xl transition-all ${
+                        selectedLocation?.id === loc.id 
+                          ? 'bg-primary text-white' 
+                          : 'bg-secondary/50 hover:bg-secondary text-bali-stone'
+                      }`}
+                    >
+                      <span className="font-medium">{loc.name}</span>
+                      <span className={`font-semibold text-sm ${
+                        selectedLocation?.id === loc.id ? 'text-white' : 'text-accent'
+                      }`}>
+                        +Rp {formatPrice(loc.surcharge)}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
