@@ -590,13 +590,16 @@ const LocationsSection = ({ locations, selectedLocation, setSelectedLocation, ma
             {/* Marker Position Info */}
             <div className="p-4 bg-primary text-white">
               <div className="flex items-center justify-between">
-                <div>
+                <div className="flex-1 min-w-0">
                   <p className="text-sm text-white/70">Pickup Location:</p>
-                  <p className="font-semibold">
-                    {selectedLocation ? selectedLocation.name : 'Custom Location'}
+                  <p className="font-semibold truncate">
+                    {selectedLocation ? selectedLocation.name : (searchedAddress || 'Custom Location')}
                   </p>
+                  {searchedAddress && (
+                    <p className="text-xs text-white/60 truncate mt-0.5">{searchedAddress}</p>
+                  )}
                 </div>
-                <div className="text-right">
+                <div className="text-right ml-4">
                   <p className="text-xs text-white/70">Coordinates:</p>
                   <p className="text-sm font-mono">
                     {markerPosition[0].toFixed(4)}, {markerPosition[1].toFixed(4)}
