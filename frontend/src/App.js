@@ -8,7 +8,7 @@ import {
   MapPin, Clock, Users, Phone, Mail, Star, 
   ChevronRight, ChevronDown, Check, X, Calendar, MessageCircle,
   Menu, ArrowRight, Sparkles, Car, Shield, Heart, Navigation as NavigationIcon,
-  Image as ImageIcon, ExternalLink
+  Image as ImageIcon, ExternalLink, Search
 } from "lucide-react";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
