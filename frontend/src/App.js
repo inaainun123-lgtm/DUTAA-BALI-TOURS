@@ -489,21 +489,21 @@ const AddressSearch = ({ setMarkerPosition, setSelectedLocation, setSearchedAddr
 
       {/* Suggestions Dropdown */}
       {showSuggestions && suggestions.length > 0 && (
-        <div className="absolute z-50 w-full mt-2 bg-white rounded-xl shadow-floating border border-stone-100 overflow-hidden animate-fade-in">
+        <div className="absolute left-0 right-0 top-full mt-2 bg-white rounded-xl shadow-2xl border border-stone-200 overflow-hidden z-[9999]" style={{zIndex: 9999}}>
           {suggestions.map((item, i) => (
             <button
-              key={i}
+              key={item.place_id || i}
               onClick={() => handleSelect(item)}
-              className="w-full px-4 py-3 text-left hover:bg-secondary/50 transition-colors border-b border-stone-50 last:border-0"
+              className="w-full px-4 py-3 text-left hover:bg-secondary transition-colors border-b border-stone-100 last:border-0"
             >
               <div className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" />
-                <div>
-                  <p className="text-sm font-medium text-primary line-clamp-1">
+                <div className="min-w-0">
+                  <p className="text-sm font-medium text-primary truncate">
                     {item.display_name.split(',')[0]}
                   </p>
-                  <p className="text-xs text-bali-stone line-clamp-1">
-                    {item.display_name.split(',').slice(1, 4).join(',')}
+                  <p className="text-xs text-bali-stone truncate">
+                    {item.display_name.split(',').slice(1, 3).join(',')}
                   </p>
                 </div>
               </div>
@@ -513,7 +513,7 @@ const AddressSearch = ({ setMarkerPosition, setSelectedLocation, setSearchedAddr
       )}
 
       {showSuggestions && query.length >= 3 && suggestions.length === 0 && !isLoading && (
-        <div className="absolute z-50 w-full mt-2 bg-white rounded-xl shadow-floating border border-stone-100 p-4 text-center text-sm text-bali-stone">
+        <div className="absolute left-0 right-0 top-full mt-2 bg-white rounded-xl shadow-2xl border border-stone-200 p-4 text-center text-sm text-bali-stone z-[9999]">
           Tidak ditemukan hasil untuk "{query}"
         </div>
       )}
