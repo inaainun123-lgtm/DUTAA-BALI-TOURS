@@ -1,0 +1,60 @@
+{
+  "summary": "Completed comprehensive testing of Bali Tour website layout update with new interactive features. All major functionality working perfectly including expandable destinations, interactive Leaflet map with draggable markers, inline booking form, and region filtering.",
+  
+  "backend_issues": {},
+  
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {
+        "component": "Location table HTML structure",
+        "issue": "Console hydration warnings for span elements inside tbody and select (does not affect functionality)",
+        "severity": "LOW",
+        "affected_selectors": ["tbody span", "select span"]
+      }
+    ]
+  },
+  
+  "passed_tests": [
+    "Homepage loads correctly with hero section and Duta Bali logo",
+    "Tour packages section displays 6 tour cards with expandable destinations",
+    "Tour Destinations button expands/collapses destination details correctly",
+    "Interactive Leaflet map loads with tiles and draggable marker",
+    "Map marker can be dragged to new positions successfully", 
+    "Location table has clickable rows that update map marker position",
+    "Region tabs (South Bali, West Bali, East Bali, etc.) filter locations correctly",
+    "Coordinates display updates when location is selected (-8.6478, 115.1385)",
+    "Open in Google Maps button generates correct URL with coordinates",
+    "Inline booking form (not modal) displays and functions correctly",
+    "All form fields accept input (name, email, WhatsApp, date, notes)",
+    "Tour package selection works and triggers price calculation",
+    "Location selection with surcharge updates total price correctly",
+    "Price calculation accurate: Best of Ubud (750,000) + Kuta (300,000) = 1,050,000",
+    "Submit booking button enables after required fields filled",
+    "Send Reservation button triggers WhatsApp integration",
+    "Floating WhatsApp button works with correct number (+62 838-7122-5179)",
+    "Navigation links scroll to correct sections (packages, locations, reviews, booking)",
+    "Hero Book Now button scrolls to booking section",
+    "Reserve This Tour buttons pre-select packages in booking form",
+    "Mobile navigation menu opens/closes correctly",
+    "Responsive design works on Desktop (1920x1080), Tablet (768x1024), Mobile (390x844)",
+    "All sections (hero, stats, packages, locations, reviews, booking, footer) load correctly",
+    "No critical JavaScript errors or broken functionality found"
+  ],
+  
+  "test_report_links": [],
+  
+  "success_percentage": {
+    "frontend": "100% (24/24 core features working)",
+    "responsive_design": "100% (all screen sizes working)",
+    "interactive_features": "100% (map, forms, navigation all functional)"
+  },
+  
+  "action_item_for_main_agent": "",
+  
+  "updated_files": [],
+  
+  "should_call_test_agent_after_fix": "false",
+  "should_main_agent_test_itself": "false"
+}
