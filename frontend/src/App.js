@@ -416,9 +416,11 @@ const AddressSearch = ({ setMarkerPosition, setSelectedLocation, setSearchedAddr
   useEffect(() => {
     if (query.length < 3) {
       setSuggestions([]);
+      setShowSuggestions(false);
       return;
     }
 
+    setShowSuggestions(true);
     const timer = setTimeout(async () => {
       setIsLoading(true);
       try {
@@ -427,14 +429,16 @@ const AddressSearch = ({ setMarkerPosition, setSelectedLocation, setSearchedAddr
           `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query + ', Bali, Indonesia')}&limit=5`
         );
         const data = await response.json();
+        console.log('Nominatim results:', data);
         setSuggestions(data);
+        setShowSuggestions(true);
       } catch (error) {
         console.error('Search error:', error);
         setSuggestions([]);
       } finally {
         setIsLoading(false);
       }
-    }, 500);
+    }, 600);
 
     return () => clearTimeout(timer);
   }, [query]);
