@@ -424,20 +424,13 @@ const AddressSearch = ({ setMarkerPosition, setSelectedLocation, setSearchedAddr
       try {
         // Search with Nominatim, bounded to Bali area
         const response = await fetch(
-          `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&countrycodes=id&viewbox=114.4,−9.0,115.8,−8.0&bounded=0&limit=5`
+          `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query + ', Bali, Indonesia')}&limit=5`
         );
         const data = await response.json();
-        
-        // Filter results to Bali area
-        const baliResults = data.filter(item => 
-          item.display_name.toLowerCase().includes('bali') ||
-          (parseFloat(item.lat) >= -9.0 && parseFloat(item.lat) <= -8.0 &&
-           parseFloat(item.lon) >= 114.4 && parseFloat(item.lon) <= 116.0)
-        );
-        
-        setSuggestions(baliResults.length > 0 ? baliResults : data.slice(0, 5));
+        setSuggestions(data);
       } catch (error) {
         console.error('Search error:', error);
+        setSuggestions([]);
       } finally {
         setIsLoading(false);
       }
