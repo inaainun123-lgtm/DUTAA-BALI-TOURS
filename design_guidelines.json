@@ -1,0 +1,187 @@
+{
+  "project_name": "Bali Private Tour Booking",
+  "design_philosophy": {
+    "identity": "Tropical Luxury + Functional Clarity",
+    "core_values": [
+      "Trustworthy (Premium aesthetic)",
+      "Organic (Nature-inspired colors)",
+      "Frictionless (Easy booking)",
+      "Emotional (Immersive imagery)"
+    ],
+    "anti_patterns": [
+      "No generic 'Travel Blue' (#007AFF)",
+      "No pure black (#000000)",
+      "No default Shadcn 'Inter' font for headings",
+      "No cluttered gradients"
+    ]
+  },
+  "typography": {
+    "font_family": {
+      "heading": "Playfair Display, serif",
+      "body": "Manrope, sans-serif",
+      "accent": "La Belle Aurore, cursive"
+    },
+    "scale": {
+      "h1": "text-4xl md:text-6xl font-bold tracking-tight leading-tight",
+      "h2": "text-3xl md:text-5xl font-semibold tracking-tight",
+      "h3": "text-2xl md:text-3xl font-medium",
+      "body": "text-base md:text-lg leading-relaxed text-gray-600",
+      "caption": "text-sm text-gray-500 uppercase tracking-widest"
+    },
+    "imports": [
+      "@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Manrope:wght@300;400;500;600;700&family=La+Belle+Aurore&display=swap');"
+    ]
+  },
+  "colors": {
+    "palette": {
+      "primary": {
+        "DEFAULT": "#1A4D2E",
+        "foreground": "#FFFFFF",
+        "hover": "#143D23"
+      },
+      "secondary": {
+        "DEFAULT": "#F5F1E8",
+        "foreground": "#1A4D2E"
+      },
+      "accent": {
+        "DEFAULT": "#D97706",
+        "foreground": "#FFFFFF",
+        "hover": "#B45309"
+      },
+      "background": "#FDFCF8",
+      "surface": "#FFFFFF",
+      "text": {
+        "primary": "#1F2937",
+        "secondary": "#4B5563",
+        "muted": "#9CA3AF"
+      },
+      "border": "#E5E7EB",
+      "success": "#059669",
+      "error": "#DC2626"
+    },
+    "usage": {
+      "body_bg": "bg-[#FDFCF8]",
+      "card_bg": "bg-white",
+      "primary_btn": "bg-[#1A4D2E] text-white hover:bg-[#143D23]",
+      "accent_btn": "bg-[#D97706] text-white hover:bg-[#B45309]",
+      "text_main": "text-[#1F2937]",
+      "text_muted": "text-[#4B5563]"
+    }
+  },
+  "layout": {
+    "container": "container mx-auto px-4 md:px-6 max-w-7xl",
+    "spacing": {
+      "section_y": "py-16 md:py-24",
+      "element_gap": "gap-6 md:gap-8"
+    },
+    "grid_strategies": {
+      "bento_grid": "grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[300px]",
+      "feature_card": "flex flex-col p-6 bg-white rounded-2xl border border-stone-100 shadow-sm hover:shadow-md transition-all duration-300"
+    }
+  },
+  "components": {
+    "buttons": {
+      "base": "inline-flex items-center justify-center rounded-full font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none",
+      "variants": {
+        "default": "bg-[#1A4D2E] text-white hover:bg-[#143D23] h-12 px-8 text-lg shadow-lg shadow-[#1A4D2E]/20",
+        "outline": "border-2 border-[#1A4D2E] text-[#1A4D2E] hover:bg-[#F5F1E8] h-12 px-8",
+        "ghost": "hover:bg-stone-100 text-stone-700"
+      }
+    },
+    "cards": {
+      "tour_card": "group relative overflow-hidden rounded-3xl bg-white shadow-lg shadow-stone-200/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300",
+      "booking_widget": "bg-white/80 backdrop-blur-xl border border-white/20 shadow-2xl rounded-3xl p-6 md:p-8"
+    },
+    "inputs": {
+      "base": "flex h-12 w-full rounded-xl border border-stone-200 bg-white px-4 py-2 text-sm ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-stone-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1A4D2E] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+    }
+  },
+  "visual_enhancers": {
+    "shadows": {
+      "soft": "shadow-[0_8px_30px_rgb(0,0,0,0.04)]",
+      "floating": "shadow-[0_20px_50px_rgb(0,0,0,0.1)]",
+      "glow": "shadow-[0_0_20px_rgba(217,119,6,0.3)]"
+    },
+    "border_radius": {
+      "default": "rounded-2xl",
+      "large": "rounded-3xl",
+      "pill": "rounded-full"
+    },
+    "textures": [
+      "Subtle noise overlay on background (opacity 0.03)",
+      "Paper texture for maps"
+    ]
+  },
+  "motion": {
+    "library": "framer-motion",
+    "preferences": {
+      "reduced_motion": "respect-user-settings",
+      "transitions": {
+        "hover": "duration-300 ease-out",
+        "page_load": "duration-700 ease-in-out"
+      }
+    },
+    "animations": {
+      "fade_in_up": {
+        "initial": { "opacity": 0, "y": 20 },
+        "animate": { "opacity": 1, "y": 0 },
+        "transition": { "duration": 0.5 }
+      },
+      "stagger_children": {
+        "animate": { "transition": { "staggerChildren": 0.1 } }
+      }
+    }
+  },
+  "assets": {
+    "images": {
+      "hero_bg": "https://images.pexels.com/photos/2412711/pexels-photo-2412711.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "tour_kelingking": "https://images.pexels.com/photos/5990051/pexels-photo-5990051.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "tour_lempuyang": "https://images.pexels.com/photos/28211183/pexels-photo-28211183.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "transport_luxury": "https://images.pexels.com/photos/18247486/pexels-photo-18247486.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "vibe_breakfast": "https://images.pexels.com/photos/8414490/pexels-photo-8414490.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "vibe_rice_terrace": "https://images.pexels.com/photos/32191652/pexels-photo-32191652.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    },
+    "icons": {
+      "library": "lucide-react",
+      "style": "stroke-width-1.5"
+    }
+  },
+  "accessibility": {
+    "contrast_check": "Ensure #1A4D2E text on #F5F1E8 bg passes AA standards",
+    "focus_states": "Visible focus ring #D97706",
+    "aria_labels": "Required for all icon-only buttons"
+  },
+  "instructions_to_main_agent": [
+    "1. SETUP: Install fonts 'Playfair Display' and 'Manrope' immediately in index.css.",
+    "2. THEME: Apply the custom color palette to tailwind.config.js extending the theme.",
+    "3. COMPONENTS: Create a 'BookingCalculator' component that dynamically updates price based on 'Location Surcharge'. Use a map-like visual or clear dropdowns.",
+    "4. LAYOUT: Use the 'Tetris' grid for the landing page hero. Don't just stack things centrally.",
+    "5. FORMS: Customize Shadcn forms to remove the default 'border-input' look; use 'border-stone-200' and 'rounded-xl'.",
+    "6. ADMIN: Keep the admin panel simple but functional. Use a sidebar layout.",
+    "7. WHATSAPP: The final booking action must construct a WhatsApp message string with all details and open the wa.me link.",
+    "8. ANIMATION: Use framer-motion for smooth entrance of tour cards. Do not overuse parallax on mobile.",
+    "9. PRICE: Display price clearly: 'Base Package + Pick-up Zone Surcharge = Total'.",
+    "10. IMAGES: Use the provided Pexels URLs. Do not use placeholders."
+  ],
+  "universal_guidelines": [
+    "Dark colors look good when used independently without gradients. DO NOT use dark colors as gradients",
+    "Don't make generic centered layouts, simplistic gradients, and uniform styling.",
+    "Create depth through layered design elements with z-index hierarchy",
+    "Use glass-morphism effects with backdrop filters (12-24px blur)",
+    "You MUST NOT apply universal transition. Eg: transition: all. This results in breaking transforms. Always add transitions for specific interactive elements like button, input excluding transforms",
+    "You MUST NOT center align the app container, ie do not add .App { text-align: center; } in the css file. This disrupts the human natural reading flow of text",
+    "Always use modern button styles like pill-shaped, or sharp button with interaction animations & color relevant to the app style",
+    "NEVER: use AI assistant Emoji characters like 🤖 etc for icons.",
+    "Every interaction needs micro-animations - hover states, transitions, parallax effects, and entrance animations. Static = dead.",
+    "Use 2-3x more spacing than feels comfortable. Cramped designs look cheap.",
+    "Subtle grain textures, noise overlays, custom cursors, selection states, and loading animations: separates good from extraordinary.",
+    "Main agent relies on these image URLs. Missing categories (especially sponsor logos) = main agent will use placeholder text which is FORBIDDEN",
+    "Prioritize using pre-existing components from src/components/ui when applicable",
+    "Create new components that match the style and conventions of existing components when needed",
+    "Examine existing components to understand the project's component patterns before creating new ones",
+    "Components MUST use named exports (export const ComponentName = ...)",
+    "Pages MUST use default exports (export default function PageName() {...})",
+    "Use sonner for toasts",
+    "Sonner component are located in /app/src/components/ui/sonner.tsx"
+  ]
+}
