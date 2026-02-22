@@ -9,12 +9,14 @@ Memperbaiki aplikasi tour booking Bali dengan:
 - Notifikasi ke Gmail & WhatsApp saat ada booking
 - Foto yang bisa diganti-ganti
 - Google Maps untuk lokasi penjemputan
+- Layout seperti referensi https://private-tours.preview.emergentagent.com/
+- **Map interaktif dengan marker yang bisa dipindah-pindah** untuk custom pickup location
 
 ## Architecture
-- **Frontend**: React.js with TailwindCSS
+- **Frontend**: React.js with TailwindCSS, Leaflet Maps
 - **Backend**: FastAPI (Python)
 - **Database**: MongoDB
-- **External**: WhatsApp Business API (via wa.me links), OpenStreetMap
+- **External**: WhatsApp Business API, OpenStreetMap/Leaflet
 
 ## User Personas
 1. **Tourist** - International/domestic travelers looking for private Bali tours
@@ -25,40 +27,46 @@ Memperbaiki aplikasi tour booking Bali dengan:
 - [x] Custom logo (Duta Bali Transport and Tours)
 - [x] 6 Tour packages with pricing and custom images
 - [x] 16 Pickup locations with surcharges and GPS coordinates
-- [x] Interactive map (OpenStreetMap) for location selection
-- [x] "Open in Google Maps" feature
+- [x] **Interactive Leaflet map with draggable marker**
+- [x] Region tabs for filtering locations
+- [x] "Open in Google Maps" feature with coordinates
 - [x] Real-time price calculation (Package + Location = Total)
-- [x] Complete booking form (name, email, WhatsApp, date, passengers, notes)
-- [x] WhatsApp booking redirect with formatted message
+- [x] Inline booking form (not modal) like reference
+- [x] Expandable tour destinations
+- [x] WhatsApp booking redirect with coordinates in message
 - [x] Responsive tropical design with animations
 
 ### What's Been Implemented (Jan 22, 2026)
 1. **Homepage**
    - Custom logo from user (Duta Bali Transport and Tours)
    - Hero section with background image
-   - Navigation with sticky header
-   - Stats section (1000+ travelers, 500+ reviews, etc.)
-   - Floating WhatsApp button
+   - Navigation with sticky header (Tour Packages, Locations, Book Now, Reviews)
+   - Stats section
 
 2. **Tour Packages Section**
-   - 6 tour packages with custom images from user
-   - Best of Ubud: Silver class experience photo
-   - Best of Uluwatu: GWK statue, Kecak dance photos
+   - 6 tour packages with custom images
+   - Expandable destinations list
+   - Included/Excluded items shown when expanded
+   - "Reserve This Tour" buttons
 
-3. **Locations Section with Map**
-   - Interactive OpenStreetMap embed
-   - 16 pickup locations with GPS coordinates
-   - Click to select and view on map
-   - Info overlay with name, region, surcharge
+3. **Locations Section with Interactive Map**
+   - **Leaflet map with draggable green marker**
+   - Click anywhere on map to set pickup point
+   - Region tabs (South/West/East/Central/North/Northwest Bali)
+   - Table of locations with surcharges
+   - Click location row to move marker
+   - Live coordinates display
    - "Open in Google Maps" button
 
 4. **Reviews Section**
-   - 3 customer testimonials
+   - 6 customer testimonials
+   - Card layout with ratings
 
-5. **Booking Modal**
-   - Complete booking form
-   - Price calculator
-   - WhatsApp redirect
+5. **Inline Booking Form**
+   - All fields inline on page (not modal)
+   - Full Name, Email, WhatsApp, Package, Date, Location, Notes
+   - Real-time price summary
+   - "Send Reservation" button → WhatsApp with full details + coordinates
 
 6. **Backend APIs**
    - GET /api/packages - List all tour packages
@@ -72,8 +80,9 @@ Memperbaiki aplikasi tour booking Bali dengan:
 ### P0 (Critical) - DONE
 - [x] Custom logo implementation
 - [x] Custom photos for tours
-- [x] Interactive map for locations
-- [x] Google Maps integration
+- [x] Interactive map with draggable marker
+- [x] Layout like reference site
+- [x] Inline booking form
 
 ### P1 (High Priority) - PENDING
 - [ ] Email notification via SendGrid (requires API key)
