@@ -11,12 +11,13 @@ Memperbaiki aplikasi tour booking Bali dengan:
 - Google Maps untuk lokasi penjemputan
 - Layout seperti referensi https://private-tours.preview.emergentagent.com/
 - **Map interaktif dengan marker yang bisa dipindah-pindah** untuk custom pickup location
+- **Autocomplete alamat** - ketik nama hotel/villa dan marker otomatis pindah
 
 ## Architecture
-- **Frontend**: React.js with TailwindCSS, Leaflet Maps
+- **Frontend**: React.js with TailwindCSS, Leaflet Maps, Nominatim Geocoding
 - **Backend**: FastAPI (Python)
 - **Database**: MongoDB
-- **External**: WhatsApp Business API, OpenStreetMap/Leaflet
+- **External**: WhatsApp Business API, OpenStreetMap/Leaflet, Nominatim API
 
 ## User Personas
 1. **Tourist** - International/domestic travelers looking for private Bali tours
@@ -28,6 +29,7 @@ Memperbaiki aplikasi tour booking Bali dengan:
 - [x] 6 Tour packages with pricing and custom images
 - [x] 16 Pickup locations with surcharges and GPS coordinates
 - [x] **Interactive Leaflet map with draggable marker**
+- [x] **Address autocomplete with Nominatim API**
 - [x] Region tabs for filtering locations
 - [x] "Open in Google Maps" feature with coordinates
 - [x] Real-time price calculation (Package + Location = Total)
@@ -40,47 +42,42 @@ Memperbaiki aplikasi tour booking Bali dengan:
 1. **Homepage**
    - Custom logo from user (Duta Bali Transport and Tours)
    - Hero section with background image
-   - Navigation with sticky header (Tour Packages, Locations, Book Now, Reviews)
+   - Navigation with sticky header
    - Stats section
 
 2. **Tour Packages Section**
    - 6 tour packages with custom images
    - Expandable destinations list
-   - Included/Excluded items shown when expanded
+   - Included/Excluded items
    - "Reserve This Tour" buttons
 
 3. **Locations Section with Interactive Map**
+   - **Address autocomplete** - ketik hotel/villa, dropdown suggestions muncul
    - **Leaflet map with draggable green marker**
    - Click anywhere on map to set pickup point
+   - Click suggestion to move marker automatically
    - Region tabs (South/West/East/Central/North/Northwest Bali)
    - Table of locations with surcharges
-   - Click location row to move marker
-   - Live coordinates display
+   - Live coordinates display with searched address
    - "Open in Google Maps" button
 
 4. **Reviews Section**
    - 6 customer testimonials
-   - Card layout with ratings
 
 5. **Inline Booking Form**
-   - All fields inline on page (not modal)
-   - Full Name, Email, WhatsApp, Package, Date, Location, Notes
+   - All fields inline on page
    - Real-time price summary
-   - "Send Reservation" button → WhatsApp with full details + coordinates
+   - WhatsApp redirect with coordinates
 
 6. **Backend APIs**
-   - GET /api/packages - List all tour packages
-   - GET /api/locations - List all pickup locations with coordinates
-   - GET /api/logo - Get logo URL
-   - POST /api/calculate-price - Calculate total price
-   - POST /api/bookings - Create booking record
-   - GET /api/whatsapp-link - Generate WhatsApp message URL
+   - All tour and booking APIs working
 
 ## Prioritized Backlog
 ### P0 (Critical) - DONE
 - [x] Custom logo implementation
 - [x] Custom photos for tours
 - [x] Interactive map with draggable marker
+- [x] **Address autocomplete feature**
 - [x] Layout like reference site
 - [x] Inline booking form
 
@@ -89,12 +86,6 @@ Memperbaiki aplikasi tour booking Bali dengan:
 - [ ] Admin panel for managing photos
 - [ ] Admin panel for managing bookings
 
-### P2 (Medium Priority) - FUTURE
-- [ ] Payment gateway integration (Midtrans/Stripe)
-- [ ] Multi-language support (EN/ID)
-- [ ] Photo gallery management
-
 ## Next Tasks
 1. Add SendGrid email integration (requires SENDGRID_API_KEY)
 2. Build admin panel for booking management
-3. Add photo management feature
