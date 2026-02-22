@@ -25,6 +25,9 @@ app = FastAPI()
 # Create a router with the /api prefix
 api_router = APIRouter(prefix="/api")
 
+# Logo URL
+LOGO_URL = "https://customer-assets.emergentagent.com/job_tour-booking-27/artifacts/fghvlh0y_WhatsApp%20Image%202026-02-22%20at%205.01.54%20PM.jpeg"
+
 # Tour Packages Data
 TOUR_PACKAGES = [
     {
@@ -37,14 +40,14 @@ TOUR_PACKAGES = [
             "Batuan Temple Village",
             "Coffee Plantation",
             "Sacred Monkey Forest",
-            "Lunch at Local Restaurant",
+            "Silver Class Experience",
             "Tegalalang Rice Terrace",
             "Tegenungan Waterfall"
         ],
         "included": ["Private car with AC", "English-speaking driver", "Petrol", "Parking fee", "Free mineral water"],
         "excluded": ["Personal expenses", "Tipping (optional)", "Entrance fees"],
         "images": [
-            "https://images.pexels.com/photos/2166559/pexels-photo-2166559.jpeg?auto=compress&w=800",
+            "https://customer-assets.emergentagent.com/job_tour-booking-27/artifacts/mqupwnrc_%C2%A9%EF%B8%8F.jpg",
             "https://images.pexels.com/photos/19137171/pexels-photo-19137171.jpeg?auto=compress&w=800",
             "https://images.pexels.com/photos/2166553/pexels-photo-2166553.jpeg?auto=compress&w=800"
         ]
@@ -84,9 +87,9 @@ TOUR_PACKAGES = [
         "included": ["Private car with AC", "English-speaking driver", "Petrol", "Parking fee", "Free mineral water"],
         "excluded": ["Personal expenses", "Tipping (optional)", "Entrance fees"],
         "images": [
-            "https://images.pexels.com/photos/2474690/pexels-photo-2474690.jpeg?auto=compress&w=800",
-            "https://images.pexels.com/photos/2474689/pexels-photo-2474689.jpeg?auto=compress&w=800",
-            "https://images.pexels.com/photos/5990051/pexels-photo-5990051.jpeg?auto=compress&w=800"
+            "https://customer-assets.emergentagent.com/job_tour-booking-27/artifacts/ed0edmg0_Bali%20is%20rich%20and%20full%20of%20culture%2C%20GWK%20is%20just%20one%20of%20many%20parts.jpg",
+            "https://customer-assets.emergentagent.com/job_tour-booking-27/artifacts/f8jxt9ot_Uluwatu%20Temple%20and%20the%20Kecak%20Monkey%20Dance%20_%20MBL%20Travel.jpg",
+            "https://customer-assets.emergentagent.com/job_tour-booking-27/artifacts/sf0e6jvv_WhatsApp%20Image%202026-02-22%20at%205.22.27%20PM.jpeg"
         ]
     },
     {
@@ -155,25 +158,30 @@ TOUR_PACKAGES = [
     }
 ]
 
-# Pickup Locations with surcharge
+# Pickup Locations with surcharge and Google Maps coordinates
 PICKUP_LOCATIONS = [
-    {"id": "kuta", "name": "Kuta", "region": "South Bali", "surcharge": 300000},
-    {"id": "seminyak", "name": "Seminyak", "region": "South Bali", "surcharge": 350000},
-    {"id": "canggu", "name": "Canggu", "region": "West Bali", "surcharge": 500000},
-    {"id": "nusa-dua", "name": "Nusa Dua", "region": "South Bali", "surcharge": 350000},
-    {"id": "uluwatu", "name": "Uluwatu", "region": "South Bali", "surcharge": 500000},
-    {"id": "jimbaran", "name": "Jimbaran", "region": "South Bali", "surcharge": 350000},
-    {"id": "sanur", "name": "Sanur", "region": "East Bali", "surcharge": 300000},
-    {"id": "legian", "name": "Legian", "region": "South Bali", "surcharge": 350000},
-    {"id": "tanah-lot", "name": "Tanah Lot", "region": "West Bali", "surcharge": 600000},
-    {"id": "ubud", "name": "Ubud", "region": "Central Bali", "surcharge": 450000},
-    {"id": "padang-bai", "name": "Padang Bai", "region": "East Bali", "surcharge": 700000},
-    {"id": "sidemen", "name": "Sidemen", "region": "East Bali", "surcharge": 600000},
-    {"id": "candidasa", "name": "Candidasa", "region": "East Bali", "surcharge": 650000},
-    {"id": "kintamani", "name": "Kintamani", "region": "North Bali", "surcharge": 750000},
-    {"id": "lovina", "name": "Lovina", "region": "North Bali", "surcharge": 950000},
-    {"id": "pemuteran", "name": "Pemuteran", "region": "Northwest Bali", "surcharge": 1000000}
+    {"id": "kuta", "name": "Kuta", "region": "South Bali", "surcharge": 300000, "lat": -8.7180, "lng": 115.1689},
+    {"id": "seminyak", "name": "Seminyak", "region": "South Bali", "surcharge": 350000, "lat": -8.6895, "lng": 115.1568},
+    {"id": "canggu", "name": "Canggu", "region": "West Bali", "surcharge": 500000, "lat": -8.6478, "lng": 115.1385},
+    {"id": "nusa-dua", "name": "Nusa Dua", "region": "South Bali", "surcharge": 350000, "lat": -8.7993, "lng": 115.2314},
+    {"id": "uluwatu", "name": "Uluwatu", "region": "South Bali", "surcharge": 500000, "lat": -8.8291, "lng": 115.0849},
+    {"id": "jimbaran", "name": "Jimbaran", "region": "South Bali", "surcharge": 350000, "lat": -8.7908, "lng": 115.1597},
+    {"id": "sanur", "name": "Sanur", "region": "East Bali", "surcharge": 300000, "lat": -8.6783, "lng": 115.2617},
+    {"id": "legian", "name": "Legian", "region": "South Bali", "surcharge": 350000, "lat": -8.7017, "lng": 115.1679},
+    {"id": "tanah-lot", "name": "Tanah Lot", "region": "West Bali", "surcharge": 600000, "lat": -8.6211, "lng": 115.0868},
+    {"id": "ubud", "name": "Ubud", "region": "Central Bali", "surcharge": 450000, "lat": -8.5069, "lng": 115.2625},
+    {"id": "padang-bai", "name": "Padang Bai", "region": "East Bali", "surcharge": 700000, "lat": -8.5333, "lng": 115.5108},
+    {"id": "sidemen", "name": "Sidemen", "region": "East Bali", "surcharge": 600000, "lat": -8.4515, "lng": 115.4184},
+    {"id": "candidasa", "name": "Candidasa", "region": "East Bali", "surcharge": 650000, "lat": -8.5083, "lng": 115.5639},
+    {"id": "kintamani", "name": "Kintamani", "region": "North Bali", "surcharge": 750000, "lat": -8.2500, "lng": 115.3833},
+    {"id": "lovina", "name": "Lovina", "region": "North Bali", "surcharge": 950000, "lat": -8.1539, "lng": 115.0241},
+    {"id": "pemuteran", "name": "Pemuteran", "region": "Northwest Bali", "surcharge": 1000000, "lat": -8.1342, "lng": 114.6477}
 ]
+
+# API to get logo
+@api_router.get("/logo")
+async def get_logo():
+    return {"logo_url": LOGO_URL}
 
 # Models
 class BookingCreate(BaseModel):
