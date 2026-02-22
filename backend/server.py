@@ -269,7 +269,7 @@ async def calculate_price(package_id: str, location_id: str, num_passengers: int
         "total": total
     }
 
-@api_router.post("/bookings", response_model=Booking)
+@api_router.post("/bookings", response_model=Booking, status_code=201)
 async def create_booking(booking_data: BookingCreate):
     # Get package info
     package = None
